@@ -1,0 +1,77 @@
+{
+  "basics": {
+    "name": "Patrick Schimpl, MA. MSc.",
+    "label": "Polymath: Chem | Anthro | CS | Futures",
+    "email": "patrick.schimpl@univie.ac.at",
+    "phone": "+43 699 11909500",
+    "location": {
+      "address": "Philippovichgasse 2-4/2/16",
+      "postalCode": "1190",
+      "city": "Vienna",
+      "countryCode": "AT"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "cosmopax",
+        "url": "https://github.com/cosmopax"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "OECD (Organisation for Economic Co-operation and Development)",
+      "position": "Expert Consultant",
+      "startDate": "2025-01-01",
+      "location": "Paris, HQ",
+      "summary": "Invited Expert for the Multistakeholder consultation on Responsible Innovation and Anticipatory Governance of Emerging Biotechnologies.",
+      "highlights": [
+        "Advising on anticipatory governance frameworks.",
+        "Synthesizing interdisciplinary insights from Synthetic Biology and Social Anthropology."
+      ]
+    },
+    {
+      "name": "University of Vienna",
+      "position": "Lecturer & Research Associate",
+      "startDate": "2021-01-01",
+      "summary": "Institutes of Organic & Theoretical Chemistry.",
+      "highlights": [
+        "Focus: Medicinal Neurochemistry, Lab Automation, Pharmacophores.",
+        "Teaching: Organic Chemistry, Bioinformatics."
+      ]
+    },
+    {
+      "name": "Artificial Life Institute",
+      "position": "Founder & Director",
+      "startDate": "2020-01-01",
+      "summary": "Research in AI and SynBio for greater good."
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Vienna",
+      "area": "Chemistry",
+      "studyType": "MSc",
+      "startDate": "2023-01-01",
+      "endDate": "2025-01-01",
+      "score": "Highest Honors"
+    },
+    {
+      "institution": "University of Vienna",
+      "area": "Cultural and Social Anthropology",
+      "studyType": "MA",
+      "startDate": "2019-01-01",
+      "endDate": "2023-01-01"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Hard Science",
+      "keywords": ["Organic Synthesis", "NMR/HPLC", "Metabolic Engineering", "Flow Chemistry"]
+    },
+    {
+      "name": "Computational",
+      "keywords": ["Python", "Machine Learning", "Agential Frameworks", "Automation", "Big Data"]
+    }
+  ]
+}
