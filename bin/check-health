@@ -1,0 +1,15 @@
+#!/bin/bash
+echo "Checking backend health..."
+if ! curl -f http://localhost:9000/health; then
+  echo "Backend health check failed."
+  exit 1
+fi
+
+echo "Checking storefront health..."
+if ! curl -f http://localhost:3000; then
+  echo "Storefront health check failed."
+  exit 1
+fi
+
+echo "All health checks passed."
+exit 0

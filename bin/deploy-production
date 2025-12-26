@@ -1,0 +1,6 @@
+#!/bin/bash
+git pull origin main
+docker compose build backend storefront
+docker compose up -d
+docker compose exec backend medusa migrations run
+echo "Deployment Complete."
