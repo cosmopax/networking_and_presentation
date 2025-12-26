@@ -23,17 +23,20 @@
     \end{minipage}%
 }
 
-% Fix Section Spacing & Rule Position (Much Closer)
+% Fix Section Spacing & Rule Position (Underscore Style)
 \usepackage{etoolbox}
 \makeatletter
 % Reduce space before section title
 \patchcmd{\section}{\vspace*{2.5ex}}{\vspace*{1.0ex}}{}{}
-% Rule closer to text (underline style)
+% Standardize space after section title + Rule UNDER (Like underline)
+% "Revert colouring" -> Remove explicit color1 from rule (Black)
+% "Like a typical underline" -> Pull up closer (-0.5em)
 \renewcommand*{\section}[1]{%
-  \par\addvspace{2.0ex}%
+  \par\addvspace{2.5ex}%
   \phantomsection{}%
   \addcontentsline{toc}{section}{#1}%
-  {\par\noindent\Large\bfseries\color{color1}#1\[-0.3em]\noindent\color{color1}\rule{\linewidth}{0.6pt}\par\nobreak\vspace*{0.5ex}}%
+  {\par\noindent\Large\bfseries\color{color1}#1}\par%
+  \vspace{-0.5em}\noindent\rule{\linewidth}{0.6pt}\par\nobreak\vspace*{0.5ex}%
 }
 \makeatother
 
@@ -72,7 +75,8 @@
 
 % 4. CENTER STACK 
 % Center stack positioning
-\begin{textblock*}{12.5cm}(3.5cm, 1.4cm)
+% Moving down slightly to 1.5cm to align with QR top approx
+\begin{textblock*}{12.5cm}(3.5cm, 1.5cm)
     \begin{center}
         {\fontfamily{pag}\selectfont\fontsize{34}{40}\selectfont\bfseries\color{color1} Patrick Schimpl}
         \vspace{0.1em}
@@ -84,10 +88,13 @@
         \vspace{0.2em}
         
         % Contact Block - Explicitly separated rows
-        {\small\color{darkgrey} Philippovichgasse 2-4/2/16, 1190 Vienna \hspace{0.3em}$\circ$\hspace{0.3em} +43 699 11909500}
+        % Row 1: Address + Phone
+        {\small\color{darkgrey} Philippovichgasse 2-4/2/16, 1190 Vienna \hspace{0.3em}$\circ$\hspace{0.3em} +43 699 11909500} \par
         \vspace{0.1em}
-        {\small\color{darkgrey} patrick.schimpl@univie.ac.at \hspace{0.3em}$\circ$\hspace{0.3em} github.com/cosmopax} \ % Force break
+        % Row 2: Email + Github
+        {\small\color{darkgrey} patrick.schimpl@univie.ac.at \hspace{0.3em}$\circ$\hspace{0.3em} github.com/cosmopax} \par
         \vspace{0.1em}
+        % Row 3: Website (Explicit Par)
         {\small\color{darkgrey} www.eu-peptides.org}
         
         \vspace{1.0em}
@@ -96,9 +103,11 @@
 \end{textblock*}
 
 % Body Start Position
-% Was 5.4cm. User wants move UP 0.9cm.
-% 5.4 - 0.9 = 4.5cm.
-\vspace*{4.5cm}
+% QR Code 2 ends at 4.4cm (start) + 2.0cm (height) = 6.4cm.
+% Top Margin is 2.0cm.
+% We need vspace such that 2.0 + vspace > 6.4.
+% Let's use 5.2cm -> 7.2cm total. Clears QRs comfortably.
+\vspace*{5.2cm}
 
 % --- SECTIONS ---
 
