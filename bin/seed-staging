@@ -1,0 +1,6 @@
+#!/bin/bash
+# This is a dummy script for seeding staging.
+# Replace with actual seeding commands.
+echo "Seeding staging environment..."
+# Example: docker compose exec backend medusa seed -f /app/data/seed.json
+echo "Staging seeding complete."
