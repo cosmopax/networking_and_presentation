@@ -160,7 +160,7 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 \moderncvstyle{banking}
 \moderncvcolor{burgundy}
 \usepackage[utf8]{inputenc}
-\usepackage[scale=0.75, top=2.5cm, right=2cm, left=2cm, bottom=2cm]{geometry}
+\usepackage[scale=0.75, top=2.5cm, right=2.5cm, left=2.5cm, bottom=2cm, textwidth=15cm]{geometry}
 \usepackage{qrcode}
 \usepackage[absolute,overlay]{textpos}
 \usepackage{xcolor}
@@ -177,10 +177,13 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 
 % --- ABSOLUTE HEADER ---
 
-% 1. QR CODE (Top Left)
+% 1. QR CODES (Top Left)
 % <--QR_COORDS_START-->
 \begin{textblock*}{2.5cm}(10mm, 10mm)
-    \qrcode[height=2.0cm]{https://github.com/cosmopax}
+    \qrcode[height=1.5cm]{https://github.com/cosmopax}
+\end{textblock*}
+\begin{textblock*}{2.5cm}(10mm, 30mm)
+    \qrcode[height=1.5cm]{https://eu-peptides.org}
 \end{textblock*}
 % <--QR_COORDS_END-->
 
@@ -188,23 +191,25 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 % <--PHOTO_COORDS_START-->
 \begin{textblock*}{5.5cm}(155mm, 10mm)
     \IfFileExists{assets/profile.jpg}{
-        \includegraphics[width=4.5cm]{assets/profile.jpg}
+        \includegraphics[width=4.05cm]{assets/profile.jpg}
     }{}
 \end{textblock*}
 % <--PHOTO_COORDS_END-->
 
-% 3. NAME & TEXT BLOCK (Centered, Adjusted down)
+% 3. NAME & TEXT BLOCK (Centered, Adjusted up)
 % <--TEXT_COORDS_START-->
-\begin{textblock*}{12cm}(4.5cm, 2.5cm)
+\begin{textblock*}{12cm}(4.5cm, 2.2cm)
     \begin{center}
         {\fontsize{28}{34}\selectfont\bfseries\color{color1} Patrick Schimpl}
-        \vspace{0.2em}
+        \vspace{0.1em}
         {\large\color{darkgrey} MA. MSc. \quad $\circ$ \quad Polymath}
         \vspace{0.1em}
         {\normalsize\color{darkgrey} Chem \quad $\circ$ \quad Anthro \quad $\circ$ \quad CS \quad $\circ$ \quad Futures}
-        \vspace{0.4em}
-        {\small\color{darkgrey} Philippovichgasse 2-4/2/16, 1190 Vienna \\ +43 699 11909500 \quad $\circ$ \quad patrick.schimpl@univie.ac.at \\ github.com/cosmopax}
-        \vspace{0.6em}
+        \vspace{0.3em}
+        {\small\color{darkgrey} +43 699 11909500 \quad $\circ$ \quad patrick.schimpl@univie.ac.at}
+        \vspace{0.1em}
+        {\small\color{darkgrey} github.com/cosmopax \quad $\circ$ \quad eu-peptides.org}
+        \vspace{0.5em}
         \textit{"Bridging molecular precision and societal foresight to engineer desirable futures."}
     \end{center}
 \end{textblock*}
@@ -223,15 +228,15 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 \cventry{2024--Present}{Judge}{iGEM Competition (Grand Jamboree)}{Global}{}{Evaluating global synthetic biology projects.}
 
 \section{Academic \& Research Experience}
-\cventry{2021--Present}{Lecturer \& Scientific Research Affiliate}{University of Vienna}{}{}{
+\cventry{2021--Present}{\textit{Lecturer \& Scientific Research Affiliate}}{\textbf{University of Vienna}}{}{}{
     Depts: Organic Chemistry, Theoretical Bioinformatics, Inorganic Chemistry. \newline
     \textbf{R\&D Focus:} Novel Pleiotropic Neurotherapeutics \& Self-Driven Adaptive Lab Systems. \newline
     \textit{Methodology: Designing teleonomic, optimization-driven agential frameworks leveraging catalytic reticular matrices.}
 }
 
 \section{Recent Publications}
-\cvitem{2025}{\textbf{Design and Synthesis of Novel Pleiotropic GABAergic agents.} \newline \textit{Status: Undisclosed pending patent application.}}
-\cvitem{2024}{\textbf{Holobiontic Earth - AI meets Biological Machines.} \newline \textit{Subtitle: A futures study on the convergence of natural and artificial realms.} (ISBN 979-8333202765)}
+\cvitem{2025}{\textbf{Design and Synthesis of Novel Pleiotropic GABAergic agents} \newline \textit{} \newline Status: Undisclosed pending patent application.}
+\cvitem{2024}{\textbf{Holobiontic Earth - AI meets Biological Machines} \newline \textit{A futures study on the convergence of natural and artificial realms.} \newline ISBN 979-8333202765}
 
 \section{Awards \& Strategic Achievements}
 \cvitem{2023}{\textbf{Fundamental Milestone Award} (Wilhelm Exner Lectures) - Total Synthesis of Pyochelin.}
@@ -239,11 +244,11 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 \cvitem{1998/99}{\textbf{State Chess Champion (Vienna) \& National Bronze Medalist}. Strategic foresight.}
 
 \section{Education}
-\cventry{2023--2025}{MSc Chemistry (Highest Honors)}{University of Vienna}{}{}{}
-\cventry{2019--2023}{MA Cultural \& Social Anthropology}{University of Vienna}{}{}{}
-\cventry{2024}{Certified Teacher}{University of Graz}{}{}{}
-\cventry{2020--2022}{BSc Chemistry}{University of Vienna}{}{}{}
-\cventry{2009--2012}{BA Cultural \& Social Anthropology}{University of Vienna}{}{}{}
+\cventry{2023--2025}{University of Vienna}{MSc Chemistry (Highest Honors)}{}{}{Focus: Drug Development, Bioinformatics, Automation.}
+\cventry{2019--2023}{University of Vienna}{MA Cultural & Social Anthropology}{}{}{Focus: Futures Studies, AI Architectures.}
+\cventry{2024}{University of Graz}{Certified Teacher}{}{}{Focus: Chemistry, Biology, Informatics.}
+\cventry{2020--2022}{University of Vienna}{BSc Chemistry}{}{}{}
+\cventry{2009--2012}{University of Vienna}{BA Cultural & Social Anthropology}{}{}{}
 
 \section{Civic Leadership \& Non-Profit}
 \cventry{2020--Present}{Founder \& Director}{Artificial Life Institute}{Vienna}{}{Research in AI and Synthetic Biology for the greater good.}
@@ -257,9 +262,9 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 \cventry{2004--2016}{Head of Customer Service}{WiSco International Freight}{Vienna}{}{Logistics optimization.}
 
 \section{Competencies}
-\cvitem{Hard Science}{Organic Synthesis, Flow Chemistry, Metabolic Engineering, NMR, HPLC}
-\cvitem{Technology}{Python, Agential Frameworks, Git, Automation Scripting}
-\cvitem{Languages}{German (Native), English (Fluent), Spanish/French (Advanced)}
+\cvitem{}{\textbf{Hard Science} \newline Organic Synthesis, Flow Chemistry, Metabolic Engineering, NMR, HPLC}
+\cvitem{}{\textbf{Technology} \newline Python, Agential Frameworks, Git, Automation Scripting}
+\cvitem{}{\textbf{Languages} \newline German (Native), English (Fluent), Spanish/French (Advanced)}
 \end{document}
 EOF
 
