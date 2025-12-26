@@ -176,28 +176,27 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 \name{Patrick}{Schimpl} 
 
 % CUSTOM COMMANDS
-% Limit body text width ("imaginary vertical line") to 85%
 \newcommand{\limiteddesc}[1]{%
     \noindent\begin{minipage}[t]{0.85\textwidth}%
         #1%
     \end{minipage}%
 }
 
-% Fix Section Spacing (Uniform)
+% Fix Section Spacing & Rule Position (Much Closer)
 \usepackage{etoolbox}
 \makeatletter
 % Reduce space before section title
-\patchcmd{\section}{\vspace*{2.5ex}}{\vspace*{1.5ex}}{}{}
-% Standardize space after section title
+\patchcmd{\section}{\vspace*{2.5ex}}{\vspace*{1.0ex}}{}{}
+% Rule closer to text (underline style)
 \renewcommand*{\section}[1]{%
-  \par\addvspace{2.5ex}%
+  \par\addvspace{2.0ex}%
   \phantomsection{}%
   \addcontentsline{toc}{section}{#1}%
-  {\par\noindent\Large\bfseries\color{color1}\rule{\linewidth}{0.2ex}\par\nobreak\vspace*{0.5ex}#1\par\nobreak\vspace*{1ex}}%
+  {\par\noindent\Large\bfseries\color{color1}#1\\[-0.3em]\noindent\color{color1}\rule{\linewidth}{0.6pt}\par\nobreak\vspace*{0.5ex}}%
 }
 \makeatother
 
-% Command for Publications to ensure Date is Right and Text Left
+% Command for Publications
 \newcommand{\pubentry}[2]{%
   \noindent\begin{minipage}[t]{0.85\textwidth}
     #2
@@ -206,69 +205,58 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
   \begin{minipage}[t]{0.12\textwidth}
     \raggedleft #1
   \end{minipage}%
-  \vspace{0.8em} % Uniform spacing between entries
+  \vspace{0.8em} % Uniform spacing
 }
 
 \begin{document}
 
 % --- ABSOLUTE HEADER ---
 
-% 1. QR CODE 1 (GitHub)
-\begin{textblock*}{2.5cm}(10mm, 10mm)
+% 1. QR CODE 1 (GitHub) - Start at 1.4cm
+\begin{textblock*}{2.5cm}(10mm, 14mm)
     \qrcode[height=2.0cm]{https://github.com/cosmopax}
 \end{textblock*}
 
-% 2. QR CODE 2 (EU-Peptides)
-\begin{textblock*}{2.5cm}(10mm, 32mm)
+% 2. QR CODE 2 (EU-Peptides) - Start at 4.4cm
+\begin{textblock*}{2.5cm}(10mm, 44mm)
     \qrcode[height=2.0cm]{https://eu-peptides.org}
 \end{textblock*}
 
-% 3. QR CODE 3 (Artificial Life Institute) - NEW
-\begin{textblock*}{2.5cm}(10mm, 54mm)
-    \qrcode[height=2.0cm]{https://artificial-life-institute.univie.ac.at}
-\end{textblock*}
-
-% 4. PHOTO (Enlarged slightly vs previous -> 4.5cm)
-% "Top and Right stay same", so we keep X=160mm, Y=10mm
+% 3. PHOTO (4.5cm)
 \begin{textblock*}{5.5cm}(160mm, 10mm)
     \IfFileExists{assets/profile.jpg}{
         \includegraphics[width=4.5cm]{assets/profile.jpg}
     }{}
 \end{textblock*}
 
-% 5. CENTER STACK 
-% "Move slightly to left" -> X changed from 4.5cm to 3.8cm
-% Y Position adjusted to accommodate 3 QR rows (~6cm total height on left) 
-% and spacing requirements.
-\begin{textblock*}{13cm}(3.8cm, 0.8cm)
+% 4. CENTER STACK 
+% Center stack positioning
+\begin{textblock*}{12.5cm}(3.5cm, 1.4cm)
     \begin{center}
-        % NAME
         {\fontfamily{pag}\selectfont\fontsize{34}{40}\selectfont\bfseries\color{color1} Patrick Schimpl}
         \vspace{0.1em}
         
-        % TITLES
         {\Large\color{black} MA. MSc.}
         \vspace{0.8em} 
         
-        % SIGNIFIERS
         {\large\color{darkgrey} Chem \hspace{0.3em}$\circ$\hspace{0.3em} Anthro \hspace{0.3em}$\circ$\hspace{0.3em} CS \hspace{0.3em}$\circ$\hspace{0.3em} Futures}
         \vspace{0.2em}
         
-        % CONTACT
+        % Contact Block - Explicitly separated rows
         {\small\color{darkgrey} Philippovichgasse 2-4/2/16, 1190 Vienna \hspace{0.3em}$\circ$\hspace{0.3em} +43 699 11909500}
         \vspace{0.1em}
-        {\small\color{darkgrey} patrick.schimpl@univie.ac.at \hspace{0.3em}$\circ$\hspace{0.3em} github.com/cosmopax}
+        {\small\color{darkgrey} patrick.schimpl@univie.ac.at \hspace{0.3em}$\circ$\hspace{0.3em} github.com/cosmopax} \\ % Force break
         \vspace{0.1em}
         {\small\color{darkgrey} www.eu-peptides.org}
         
-        % BONMOT
         \vspace{1.0em}
         \textit{"Bridging molecular precision and societal foresight to engineer desirable futures."}
     \end{center}
 \end{textblock*}
 
-% Adjust Main Body Start Position (Move Upwards)
-% Was 5.0cm. Reducing to 4.5cm seems appropriate given Header is compact.
+% Body Start Position
+% Was 5.4cm. User wants move UP 0.9cm.
+% 5.4 - 0.9 = 4.5cm.
 \vspace*{4.5cm}
 
 % --- SECTIONS ---
@@ -293,27 +281,25 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 }
 
 \section{Academic \& Research Experience}
-% User Req: "University of Vienna has to start from beginning, no additional empty space"
-% We use negative vspace if standard cventry introduces gap
-\vspace{-0.5em} 
+\vspace*{-1.2em}
 \cventry{\textnormal{2021--Present}}{\textbf{University of Vienna}}{}{}{}{%
 \limiteddesc{%
-\textit{Lecturer} \newline
+\vspace*{0.2em} 
+\textit{\large Lecturer} \newline % Italic
 Faculty Chemistry, Departments: OC, TBI; IOC, formerly Faculty Biology, Department: Mol. Bio \newline
-\small{Conception and Teaching of Practical Lab Course: Automation in Everyday Lab Routine; Teaching of Practical Lab Courses from various domains of Chemistry} \vspace{0.5em} \newline
+\normalsize{Conception and Teaching of Practical Lab Course: Automation in Everyday Lab Routine; Teaching of Practical Lab Courses from various domains of Chemistry} \vspace{0.5em} \newline
 %
-\normalsize\textit{Scientific Research Affiliate} \newline
+\textit{\large Scientific Research Affiliate} \newline % Italic
 Faculty of Pharmacy, Department of Pharmaceutical Chemistry \newline
-\textbf{R\&D Focus:} Novel Pleiotropic Neurotherapeutics \& Self-Driven Adaptive Lab Systems. \newline
+\textit{R\&D Focus:} Novel Pleiotropic Neurotherapeutics \& Self-Driven Adaptive Lab Systems. \newline % Italic
 \textit{Methodology: Designing teleonomic, optimization-driven agential frameworks leveraging catalytic reticular matrices.}%
 }%
 }
 
 \section{Recent Publications}
-% User Req: "Dates to the right!!!!" and "No broken layout"
-% Using custom \pubentry{Date}{Content}
 \pubentry{2025}{%
 \textbf{Design and Synthesis of Novel Pleiotropic GABAergic agents.}\newline
+\vspace*{0.2em} \newline % Empty row to force 3-row effect
 \textit{Status: Undisclosed pending patent application.}%
 }
 
@@ -347,12 +333,8 @@ Faculty of Pharmacy, Department of Pharmaceutical Chemistry \newline
 \cventry{\textnormal{2024}}{Certified Teacher}{\textit{University of Graz}}{}{}{%
 \limiteddesc{Subjects: Chemistry, Biology, Informatics.}%
 }
-\cventry{\textnormal{2020--2022}}{BSc Chemistry}{\textit{University of Vienna}}{}{}{%
-\limiteddesc{}%
-}
-\cventry{\textnormal{2009--2012}}{BA Cultural \& Social Anthropology}{\textit{University of Vienna}}{}{}{%
-\limiteddesc{}%
-}
+\cventry{\textnormal{2020--2022}}{BSc Chemistry}{\textit{University of Vienna}}{}{}{} 
+\cventry{\textnormal{2009--2012}}{BA Cultural \& Social Anthropology}{\textit{University of Vienna}}{}{}{} 
 
 \section{Civic Leadership \& Non-Profit}
 \cventry{\textnormal{2020--Present}}{Founder \& Director}{Artificial Life Institute}{Vienna}{}{%
