@@ -188,14 +188,14 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 % Reduce space before section title
 \patchcmd{\section}{\vspace*{2.5ex}}{\vspace*{1.0ex}}{}{}
 % Standardize space after section title + Rule UNDER (Like underline)
-% "Revert colouring" -> Remove explicit color1 from rule (Black)
+% "Revert colouring" -> Restore color1 (Burgundy) to match theme
 % "Like a typical underline" -> Pull up closer (-0.5em)
 \renewcommand*{\section}[1]{%
   \par\addvspace{2.5ex}%
   \phantomsection{}%
   \addcontentsline{toc}{section}{#1}%
   {\par\noindent\Large\bfseries\color{color1}#1}\par%
-  \vspace{-0.5em}\noindent\rule{\linewidth}{0.6pt}\par\nobreak\vspace*{0.5ex}%
+  \vspace{-0.5em}\noindent\color{color1}\rule{\linewidth}{0.6pt}\par\nobreak\vspace*{0.5ex}%
 }
 \makeatother
 
