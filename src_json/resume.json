@@ -1,143 +1,77 @@
 {
   "basics": {
-    "name": "Patrick Schimpl",
-    "titles": "MA. MSc.",
+    "name": "Patrick Schimpl, MA. MSc.",
+    "label": "Polymath: Chem | Anthro | CS | Futures",
     "email": "patrick.schimpl@univie.ac.at",
     "phone": "+43 699 11909500",
-    "url": "https://github.com/cosmopax",
-    "location": "Vienna, Austria",
-    "mission": "Bridging molecular precision and societal foresight to engineer desirable futures."
-  },
-  "sections": {
-    "policy": [
+    "location": {
+      "address": "Philippovichgasse 2-4/2/16",
+      "postalCode": "1190",
+      "city": "Vienna",
+      "countryCode": "AT"
+    },
+    "profiles": [
       {
-        "role": "Expert Consultant",
-        "org": "OECD (Headquarters)",
-        "year": "2025",
-        "loc": "Paris",
-        "desc": "Invited Expert for 'Responsible Innovation and Anticipatory Governance of Emerging Biotechnologies'. Advising on governance frameworks for SynBio/AI convergence."
-      }
-    ],
-    "academic_leadership": [
-      {
-        "role": "Supervisor",
-        "org": "BISC-E Competition (European Finals)",
-        "year": "2025",
-        "desc": "Supervision of BOKU University Team (Bronze Medal)."
-      },
-      {
-        "role": "Judge",
-        "org": "iGEM Competition (Grand Jamboree)",
-        "year": "2024--Present",
-        "desc": "Evaluating global synthetic biology projects."
-      },
-      {
-        "role": "Film Reviewer",
-        "org": "Ethnocineca",
-        "year": "2015--2018",
-        "desc": "Critical analysis of anthropological documentaries (Vienna Anthropology Film Festival)."
-      },
-      {
-        "role": "Organizing Team",
-        "org": "CHAGS XI (Vienna)",
-        "year": "2015",
-        "desc": "Conference on Hunting and Gathering Societies. Logistics and coordination."
-      }
-    ],
-    "research": [
-      {
-        "role": "Lecturer & Scientific Research Affiliate",
-        "org": "University of Vienna",
-        "year": "2021--Present",
-        "desc": "Depts: Organic Chemistry, Theoretical Bioinformatics, Inorganic Chemistry.\\ \textbf{R\&D Focus:} Novel Pleiotropic Neurotherapeutics \& Self-Driven Adaptive Lab Systems.\\ \textit{Methodology: Designing teleonomic, optimization-driven agential frameworks leveraging catalytic reticular matrices.}"
-      }
-    ],
-    "civic": [
-      {
-        "role": "Founder & Director",
-        "org": "Artificial Life Institute",
-        "year": "2020--Present",
-        "desc": "Research in AI and Synthetic Biology for the greater good."
-      },
-      {
-        "role": "Founder & Director",
-        "org": "Wunderwelt",
-        "year": "2016--Present",
-        "desc": "Promoting autonomous local structures and urban sustainability."
-      }
-    ],
-    "education": [
-      {
-        "role": "MSc Chemistry (Highest Honors)",
-        "org": "University of Vienna",
-        "year": "2023--2025",
-        "desc": "Focus: Drug Development, Bioinformatics, Automation."
-      },
-      {
-        "role": "MA Cultural & Social Anthropology",
-        "org": "University of Vienna",
-        "year": "2019--2023",
-        "desc": "Focus: Futures Studies, AI Architectures."
-      },
-      {
-        "role": "Certified Teacher",
-        "org": "University of Graz",
-        "year": "2024",
-        "desc": "Subjects: Chemistry, Biology, Informatics."
-      },
-      {
-        "role": "BSc Chemistry",
-        "org": "University of Vienna",
-        "year": "2020--2022",
-        "desc": ""
-      },
-      {
-        "role": "BA Cultural & Social Anthropology",
-        "org": "University of Vienna",
-        "year": "2009--2012",
-        "desc": ""
-      }
-    ],
-    "enterprise": [
-      {
-        "role": "Founder",
-        "org": "Cosmogenetic Biomass",
-        "year": "2007--2019",
-        "desc": "Design & Distribution of automated cultivation systems."
-      },
-      {
-        "role": "Founder",
-        "org": "Cosmogenetic Electrotech",
-        "year": "2007--2019",
-        "desc": "Specialized electronic devices for automation."
-      },
-      {
-        "role": "Founder",
-        "org": "Entrecote",
-        "year": "2007--2019",
-        "desc": "Modeling agency and photography services."
-      },
-      {
-        "role": "Head of Customer Service",
-        "org": "WiSco International Freight",
-        "year": "2004--2016",
-        "desc": "Logistics optimization and key account management."
+        "network": "GitHub",
+        "username": "cosmopax",
+        "url": "https://github.com/cosmopax"
       }
     ]
   },
-  "awards": [
-    { "title": "Fundamental Milestone Award", "org": "Wilhelm Exner Lectures", "year": "2023", "desc": "Total Synthesis of Pyochelin." },
-    { "title": "Silver Medal", "org": "iGEM", "year": "2023", "desc": "Biomanufacturing Sex Hormones." },
-    { "title": "Performance Scholarship", "org": "University of Vienna", "year": "2023", "desc": "Merit-based Academic Excellence Grant." },
-    { "title": "State Chess Champion (Vienna)", "org": "ÖSB", "year": "1996--1999", "desc": "Youth League & National Bronze Medalist." }
+  "work": [
+    {
+      "name": "OECD (Organisation for Economic Co-operation and Development)",
+      "position": "Expert Consultant",
+      "startDate": "2025-01-01",
+      "location": "Paris, HQ",
+      "summary": "Invited Expert for the Multistakeholder consultation on Responsible Innovation and Anticipatory Governance of Emerging Biotechnologies.",
+      "highlights": [
+        "Advising on anticipatory governance frameworks.",
+        "Synthesizing interdisciplinary insights from Synthetic Biology and Social Anthropology."
+      ]
+    },
+    {
+      "name": "University of Vienna",
+      "position": "Lecturer & Research Associate",
+      "startDate": "2021-01-01",
+      "summary": "Institutes of Organic & Theoretical Chemistry.",
+      "highlights": [
+        "Focus: Medicinal Neurochemistry, Lab Automation, Pharmacophores.",
+        "Teaching: Organic Chemistry, Bioinformatics."
+      ]
+    },
+    {
+      "name": "Artificial Life Institute",
+      "position": "Founder & Director",
+      "startDate": "2020-01-01",
+      "summary": "Research in AI and SynBio for greater good."
+    }
   ],
-  "publications": [
-    { "title": "Design and Synthesis of Novel Pleiotropic GABAergic agents", "status": "Undisclosed pending patent application (2025)" },
-    { "title": "Holobiontic Earth - AI meets Biological Machines", "status": "Subtitle: A futures study on the convergence of natural and artificial realms. (2024, ISBN 979-8333202765)" }
+  "education": [
+    {
+      "institution": "University of Vienna",
+      "area": "Chemistry",
+      "studyType": "MSc",
+      "startDate": "2023-01-01",
+      "endDate": "2025-01-01",
+      "score": "Highest Honors"
+    },
+    {
+      "institution": "University of Vienna",
+      "area": "Cultural and Social Anthropology",
+      "studyType": "MA",
+      "startDate": "2019-01-01",
+      "endDate": "2023-01-01"
+    }
   ],
-  "skills": {
-    "hard": "Organic Synthesis, Flow Chemistry, Metabolic Engineering, NMR, HPLC",
-    "tech": "Python, Agential Frameworks, Git, Automation Scripting",
-    "lang": "German (Native), English (Fluent), Spanish/French (Advanced)"
-  }
+  "skills": [
+    {
+      "name": "Hard Science",
+      "keywords": ["Organic Synthesis", "NMR/HPLC", "Metabolic Engineering", "Flow Chemistry"]
+    },
+    {
+      "name": "Computational",
+      "keywords": ["Python", "Machine Learning", "Agential Frameworks", "Automation", "Big Data"]
+    }
+  ]
 }

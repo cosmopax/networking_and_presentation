@@ -1,129 +1,40 @@
 \documentclass[11pt,a4paper,sans]{moderncv}
-\moderncvstyle{banking}
+\moderncvstyle{banking} % Options: casual, classic, banking, oldstyle, fancy
 \moderncvcolor{burgundy}
+
 \usepackage[utf8]{inputenc}
+\usepackage[scale=0.75]{geometry}
 
-% GEOMETRY
-\usepackage[scale=0.75, top=2.0cm, right=2cm, left=2cm, bottom=2cm]{geometry}
-
-\usepackage{qrcode}
-\usepackage[absolute,overlay]{textpos}
-\usepackage{xcolor}
-
-% FONT STRATEGY:
-\usepackage{avant}              % Name
-\usepackage[scaled]{helvet}     % Body
-\renewcommand\familydefault{\sfdefault}
-
-% DEFINITIONS
-\definecolor{color1}{rgb}{0.5,0.0,0.13} % Burgundy
-\definecolor{black}{rgb}{0,0,0}
-\definecolor{darkgrey}{rgb}{0.3,0.3,0.3}
-\name{Patrick}{Schimpl} 
+% Personal Data
+\name{Patrick}{Schimpl, MA. MSc.}
+\title{Polymath | Chem | Anthro | CS | Futures}
+\address{Philippovichgasse 2-4/2/16}{1190 Vienna}{Austria}
+\phone[mobile]{+43~699~11909500}
+\email{patrick.schimpl@univie.ac.at}
+\social[github]{cosmopax}
 
 \begin{document}
+\makecvtitle
 
-% --- HEADER BLOCKS ---
+\section{Executive Profile}
+Polymathic researcher and developer bridging the gap between wet-lab chemistry, social anthropology, and computational intelligence. Proven track record in academic teaching, startup founding, and high-level policy consultation (OECD).
 
-% 1. QR CODE
-\begin{textblock*}{2.5cm}(10mm, 10mm)
-    \qrcode[height=2.0cm]{https://github.com/cosmopax}
-\end{textblock*}
+\section{Select Experience}
+\cventry{2025}{Expert Consultant}{OECD - HQ}{Paris}{}{Invited expert for the \textit{Multistakeholder consultation on Responsible Innovation and Anticipatory Governance of Emerging Biotechnologies}. Focusing on policy frameworks for synthetic biology and AI convergence.}
 
-% 2. PHOTO
-\begin{textblock*}{5.0cm}(160mm, 10mm)
-    \IfFileExists{assets/profile.jpg}{
-        \includegraphics[width=4.5cm]{assets/profile.jpg}
-    }{}
-\end{textblock*}
+\cventry{2021--Present}{Lecturer \& Research Associate}{University of Vienna}{Vienna}{}{Institutes of Organic \& Theoretical Chemistry. Medicinal Neurochemistry, Lab Automation, and teaching.}
 
-% 3. CENTER STACK (Y=1.5cm)
-\begin{textblock*}{12cm}(3.8cm, 1.5cm)
-    \begin{center}
-        % NAME
-        {\fontfamily{pag}\selectfont\fontsize{34}{40}\selectfont\bfseries\color{color1} Patrick Schimpl}
-        
-        \vspace{0.1em}
-        
-        % TITLES
-        {\Large\color{black} MA. MSc.}
-        
-        \vspace{1.0em} 
-        
-        % DATA
-        {\large\color{darkgrey} Chem \hspace{0.3em}$\circ$\hspace{0.3em} Anthro \hspace{0.3em}$\circ$\hspace{0.3em} CS \hspace{0.3em}$\circ$\hspace{0.3em} Futures}
-        
-        \vspace{0.2em}
-        
-        {\small\color{darkgrey} Philippovichgasse 2-4/2/16, 1190 Vienna \hspace{0.3em}$\circ$\hspace{0.3em} +43 699 11909500}
-        \vspace{0.1em}
-        {\small\color{darkgrey} patrick.schimpl@univie.ac.at \hspace{0.3em}$\circ$\hspace{0.3em} github.com/cosmopax}
-        
-        % BONMOT
-        \vspace{1.0em}
-        \textit{"Bridging molecular precision and societal foresight to engineer desirable futures."}
-    \end{center}
-\end{textblock*}
+\cventry{2025--Present}{Supervisor}{BISC-E Competition}{Europe}{}{Supervising BOKU University team for Bio-based Innovation Student Challenge.}
 
-% SPACER (Body at 4.5cm)
-\vspace*{4.5cm} 
-
-% --- SECTIONS ---
-% STRATEGY: Use \cventry for everything to ensure uniform spacing.
-% \cventry{Date}{Title(Bold)}{Org}{Location}{}{Desc}
-
-\section{Highlight: Policy \& Consultation}
-\cventry{\textnormal{2025}}{Expert Consultant}{OECD - HQ}{Paris}{}{Invited Expert for 'Responsible Innovation and Anticipatory Governance of Emerging Biotechnologies'. Advising on governance frameworks for SynBio/AI convergence.}
-
-\section{Academic Leadership \& Mentoring}
-\cventry{\textnormal{2025}}{Supervisor}{BISC-E Competition (European Finals)}{Europe}{}{Supervision of BOKU University Team (Bronze Medal).}
-\cventry{\textnormal{2024--Present}}{Judge}{iGEM Competition (Grand Jamboree)}{Global}{}{Evaluating global synthetic biology projects.}
-\cventry{\textnormal{2015--2018}}{Film Reviewer}{Ethnocineca}{Vienna}{}{Critical analysis of anthropological documentaries (Academic Program).}
-\cventry{\textnormal{2015}}{Organizing Team}{CHAGS XI}{Vienna}{}{Logistics/Coordination for Conference on Hunting and Gathering Societies.}
-
-\section{Academic \& Research Experience}
-\cventry{\textnormal{2021--Present}}{Lecturer \& Scientific Research Affiliate}{University of Vienna}{}{}{
-    Depts: Organic Chemistry, Theoretical Bioinformatics, Inorganic Chemistry. \newline
-    \textbf{R\&D Focus:} Novel Pleiotropic Neurotherapeutics \& Self-Driven Adaptive Lab Systems. \newline
-    \textit{Methodology: Designing teleonomic, optimization-driven agential frameworks leveraging catalytic reticular matrices.}
-}
-
-\section{Recent Publications}
-% Using cvitem here because publications are citations, not "Roles". 
-% Spacing might be slightly different but that is standard for lists vs entries.
-\cvitem{}{\textbf{Design and Synthesis of Novel Pleiotropic GABAergic agents.} \hfill 2025 \newline \textit{Status: Undisclosed pending patent application.}}
-\cvitem{}{\textbf{Holobiontic Earth - AI meets Biological Machines.} \hfill 2024 \newline \textit{Subtitle: A futures study on the convergence of natural and artificial realms.} (ISBN 979-8333202765)}
-
-\section{Awards \& Strategic Achievements}
-% MAPPED FOR VISUAL HIERARCHY:
-% {Title Slot} <- Organization Name (Will be Bold)
-% {Org Slot}   <- Award Name (Will be Normal/SmallCaps)
-% {Location}   <- Global/Austria
-
-\cventry{\textnormal{2023}}{Wilhelm Exner Lectures}{Fundamental Milestone Award}{Global}{}{Total Synthesis of Pyochelin.}
-\cventry{\textnormal{2023}}{iGEM}{Silver Medal}{Global}{}{Biomanufacturing Sex Hormones.}
-\cventry{\textnormal{2023}}{University of Vienna}{Performance Scholarship}{Vienna}{}{Merit-based Excellence Grant.}
-\cventry{\textnormal{1996--1999}}{ÖSB - Austrian Chess Federation}{State Chess Champion (Vienna) \& National Bronze Medalist}{Austria}{}{Strategic foresight.}
+\cventry{2024--Present}{Judge}{iGEM Competition}{Global}{}{Evaluation of synthetic biology projects worldwide.}
 
 \section{Education}
-\cventry{\textnormal{2023--2025}}{MSc Chemistry (Highest Honors)}{University of Vienna}{}{}{}
-\cventry{\textnormal{2019--2023}}{MA Cultural \& Social Anthropology}{University of Vienna}{}{}{}
-\cventry{\textnormal{2024}}{Certified Teacher}{University of Graz}{}{}{Subjects: Chemistry, Biology, Informatics.}
-\cventry{\textnormal{2020--2022}}{BSc Chemistry}{University of Vienna}{}{}{}
-\cventry{\textnormal{2009--2012}}{BA Cultural \& Social Anthropology}{University of Vienna}{}{}{}
+\cventry{2023--2025}{MSc in Chemistry}{University of Vienna}{Highest Honors}{}{Focus: Drug Development, Bioinformatics, Automation.}
+\cventry{2019--2023}{MA in Cultural \& Social Anthropology}{University of Vienna}{}{}{Focus: Futures Studies, AI Architectures.}
 
-\section{Civic Leadership \& Non-Profit}
-\cventry{\textnormal{2020--Present}}{Founder \& Director}{Artificial Life Institute}{Vienna}{}{Research in AI and Synthetic Biology for the greater good.}
-\cventry{\textnormal{2016--Present}}{Founder \& Director}{Wunderwelt}{Vienna}{}{Promoting autonomous local structures.}
-
-\section{Entrepreneurial \& Corporate Experience}
-\cventry{\textnormal{2007--2019}}{Founder}{Cosmogenetic Biomass}{Vienna}{}{Automated cultivation systems.}
-\cventry{\textnormal{2007--2019}}{Founder}{Cosmogenetic Electrotech}{Vienna}{}{Specialized electronic devices.}
-\cventry{\textnormal{2007--2019}}{Founder}{Entrecote}{Vienna}{}{Modeling agency services.}
-\cventry{\textnormal{2004--2016}}{Head of Customer Service}{WiSco International Freight}{Vienna}{}{Logistics optimization.}
-
-\section{Competencies}
-\cvitem{Hard Science}{Organic Synthesis, Flow Chemistry, Metabolic Engineering, NMR, HPLC}
-\cvitem{Technology}{Python, Agential Frameworks, Git, Automation Scripting}
+\section{Technical Skills}
+\cvitem{Computational}{Python, ML, Agential Frameworks, Automation Scripting}
+\cvitem{Laboratory}{Flow Chemistry, Metabolic Engineering, NMR, HPLC}
 \cvitem{Languages}{German (Native), English (Fluent), Spanish/French (Advanced)}
+
 \end{document}
