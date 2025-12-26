@@ -2,128 +2,178 @@
 \moderncvstyle{banking}
 \moderncvcolor{burgundy}
 \usepackage[utf8]{inputenc}
-
-% GEOMETRY
-\usepackage[scale=0.75, top=2.0cm, right=2cm, left=2cm, bottom=2cm]{geometry}
-
+% ADJUSTED GEOMETRY
+\usepackage[scale=0.75, top=2.5cm, right=2cm, left=2cm, bottom=2cm]{geometry}
 \usepackage{qrcode}
 \usepackage[absolute,overlay]{textpos}
 \usepackage{xcolor}
-
-% FONT STRATEGY:
-\usepackage{avant}              % Name
-\usepackage[scaled]{helvet}     % Body
+\usepackage[scaled]{helvet}
 \renewcommand\familydefault{\sfdefault}
 
 % DEFINITIONS
 \definecolor{color1}{rgb}{0.5,0.0,0.13} % Burgundy
-\definecolor{black}{rgb}{0,0,0}
 \definecolor{darkgrey}{rgb}{0.3,0.3,0.3}
+
 \name{Patrick}{Schimpl} 
+
+% CUSTOM COMMANDS FOR UNIFORMITY
+% Limit body text width ("imaginary vertical line")
+\newcommand{\limiteddesc}[1]{%
+    \begin{minipage}[t]{0.85\textwidth}%
+        #1%
+    \end{minipage}%
+}
+
+% Custom entry to force right-aligned Date/Location if possible, 
+% or at least consistent spacing.
+% ModernCV Banking: #2=Title(Bold), #3=Org, #4=Loc, #1=Year. 
+% We want Title (Row 1), Org (Row 2), Info (Row 3).
+% Banking renders: Title, Org, Loc, Year.
+% We will hack the arguments to force line breaks and alignment.
 
 \begin{document}
 
-% --- HEADER BLOCKS ---
+% --- ABSOLUTE HEADER ---
 
-% 1. QR CODE
+% 1. QR CODE 1 (GitHub)
 \begin{textblock*}{2.5cm}(10mm, 10mm)
     \qrcode[height=2.0cm]{https://github.com/cosmopax}
 \end{textblock*}
 
-% 2. PHOTO
+% 2. QR CODE 2 (EU-Peptides) - New
+\begin{textblock*}{2.5cm}(10mm, 32mm)
+    \qrcode[height=2.0cm]{https://eu-peptides.org}
+\end{textblock*}
+
+% 3. PHOTO (Reduced 10% -> ~4.0cm)
 \begin{textblock*}{5.0cm}(160mm, 10mm)
     \IfFileExists{assets/profile.jpg}{
-        \includegraphics[width=4.5cm]{assets/profile.jpg}
+        \includegraphics[width=4.0cm]{assets/profile.jpg}
     }{}
 \end{textblock*}
 
-% 3. CENTER STACK (Y=1.5cm)
-\begin{textblock*}{12cm}(3.8cm, 1.5cm)
+% 4. CENTER STACK (Moved UP slightly, condensed)
+\begin{textblock*}{12cm}(4.5cm, 1.8cm)
     \begin{center}
-        % NAME
-        {\fontfamily{pag}\selectfont\fontsize{34}{40}\selectfont\bfseries\color{color1} Patrick Schimpl}
-        
-        \vspace{0.1em}
-        
-        % TITLES
-        {\Large\color{black} MA. MSc.}
-        
-        \vspace{1.0em} 
-        
-        % DATA
-        {\large\color{darkgrey} Chem \hspace{0.3em}$\circ$\hspace{0.3em} Anthro \hspace{0.3em}$\circ$\hspace{0.3em} CS \hspace{0.3em}$\circ$\hspace{0.3em} Futures}
-        
+        {\fontsize{28}{34}\selectfont\bfseries\color{color1} Patrick Schimpl}
         \vspace{0.2em}
-        
-        {\small\color{darkgrey} Philippovichgasse 2-4/2/16, 1190 Vienna \hspace{0.3em}$\circ$\hspace{0.3em} +43 699 11909500}
+        {\large\color{darkgrey} MA. MSc. \quad $\circ$ \quad Polymath}
         \vspace{0.1em}
-        {\small\color{darkgrey} patrick.schimpl@univie.ac.at \hspace{0.3em}$\circ$\hspace{0.3em} github.com/cosmopax}
-        
-        % BONMOT
-        \vspace{1.0em}
+        {\normalsize\color{darkgrey} Chem \quad $\circ$ \quad Anthro \quad $\circ$ \quad CS \quad $\circ$ \quad Futures}
+        \vspace{0.3em}
+        {\small\color{darkgrey} Philippovichgasse 2-4/2/16, 1190 Vienna \ +43 699 11909500 \quad $\circ$ \quad patrick.schimpl@univie.ac.at \ github.com/cosmopax \quad $\circ$ \quad www.eu-peptides.org}
+        \vspace{0.6em}
         \textit{"Bridging molecular precision and societal foresight to engineer desirable futures."}
     \end{center}
 \end{textblock*}
 
-% SPACER (Body at 4.5cm)
-\vspace*{4.5cm} 
+\vspace*{5.5cm}
 
 % --- SECTIONS ---
-% STRATEGY: Use \cventry for everything to ensure uniform spacing.
-% \cventry{Date}{Title(Bold)}{Org}{Location}{}{Desc}
+% Rule: "all locations and dates stay rightbound".
+% Rule: "body text runs at most to imaginary line".
+% We use \limiteddesc{} for descriptions.
+% We manually place dates/locations with \hfill if standard doesn't suffice.
 
 \section{Highlight: Policy \& Consultation}
-\cventry{\textnormal{2025}}{Expert Consultant}{OECD - HQ}{Paris}{}{Invited Expert for 'Responsible Innovation and Anticipatory Governance of Emerging Biotechnologies'. Advising on governance frameworks for SynBio/AI convergence.}
+% Note: Using \hfill in arg 2 (Title) might push things? 
+% Let's try standard cventry first but keeping structure clear.
+\cventry{\textnormal{2025}}{Expert Consultant}{OECD - HQ}{Paris}{}{%
+\limiteddesc{Invited Expert for 'Responsible Innovation and Anticipatory Governance of Emerging Biotechnologies'. Advising on governance frameworks for SynBio/AI convergence.}%
+}
 
 \section{Academic Leadership \& Mentoring}
-\cventry{\textnormal{2025}}{Supervisor}{BISC-E Competition (European Finals)}{Europe}{}{Supervision of BOKU University Team (Bronze Medal).}
-\cventry{\textnormal{2024--Present}}{Judge}{iGEM Competition (Grand Jamboree)}{Global}{}{Evaluating global synthetic biology projects.}
-\cventry{\textnormal{2015--2018}}{Film Reviewer}{Ethnocineca}{Vienna}{}{Critical analysis of anthropological documentaries (Academic Program).}
-\cventry{\textnormal{2015}}{Organizing Team}{CHAGS XI}{Vienna}{}{Logistics/Coordination for Conference on Hunting and Gathering Societies.}
+\cventry{\textnormal{2025}}{Supervisor}{BISC-E Competition (European Finals)}{Europe}{}{%
+\limiteddesc{Supervision of BOKU University Team (Bronze Medal).}%
+}
+\cventry{\textnormal{2024--Present}}{Judge}{iGEM Competition (Grand Jamboree)}{Global}{}{%
+\limiteddesc{Evaluating global synthetic biology projects.}%
+}
+\cventry{\textnormal{2015--2018}}{Film Reviewer}{Ethnocineca}{Vienna}{}{%
+\limiteddesc{Critical analysis of anthropological documentaries (Academic Program).}%
+}
+\cventry{\textnormal{2015}}{Organizing Team}{CHAGS XI}{Vienna}{}{%
+\limiteddesc{Logistics/Coordination for Conference on Hunting and Gathering Societies.}%
+}
 
 \section{Academic \& Research Experience}
-\cventry{\textnormal{2021--Present}}{Lecturer \& Scientific Research Affiliate}{University of Vienna}{}{}{
-    Depts: Organic Chemistry, Theoretical Bioinformatics, Inorganic Chemistry. \newline
-    \textbf{R\&D Focus:} Novel Pleiotropic Neurotherapeutics \& Self-Driven Adaptive Lab Systems. \newline
-    \textit{Methodology: Designing teleonomic, optimization-driven agential frameworks leveraging catalytic reticular matrices.}
+% Requirement: 
+% Bold University
+% Italic Lecturer
+% Faculty...
+% Conception...
+% Scientific Research Affiliate...
+\cventry{\textnormal{2021--Present}}{\textbf{University of Vienna}}{}{}{}{%
+\limiteddesc{%
+\textit{Lecturer} \newline
+Faculty Chemistry, Departments: OC, TBI; IOC, formerly Faculty Biology, Department: Mol. Bio \newline
+\small{Conception and Teaching of Practical Lab Course: Automation in Everyday Lab Routine; Teaching of Practical Lab Courses from various domains of Chemistry} \vspace{0.5em} \newline
+%
+\normalsize\textit{Scientific Research Affiliate} \newline
+Faculty of Pharmacy, Department of Pharmaceutical Chemistry \newline
+\textbf{R\&D Focus:} Novel Pleiotropic Neurotherapeutics \& Self-Driven Adaptive Lab Systems. \newline
+\textit{Methodology: Designing teleonomic, optimization-driven agential frameworks leveraging catalytic reticular matrices.}%
+}%
 }
 
 \section{Recent Publications}
-% Using cvitem here because publications are citations, not "Roles". 
-% Spacing might be slightly different but that is standard for lists vs entries.
-\cvitem{}{\textbf{Design and Synthesis of Novel Pleiotropic GABAergic agents.} \hfill 2025 \newline \textit{Status: Undisclosed pending patent application.}}
-\cvitem{}{\textbf{Holobiontic Earth - AI meets Biological Machines.} \hfill 2024 \newline \textit{Subtitle: A futures study on the convergence of natural and artificial realms.} (ISBN 979-8333202765)}
+% Req: Title Bold (Row 1), Subtitle Italic (Row 2), Info (Row 3)
+\cvitem{2025}{%
+\textbf{Design and Synthesis of Novel Pleiotropic GABAergic agents.}\newline
+\textit{Status: Undisclosed pending patent application.}
+}
+\cvitem{2024}{%
+\textbf{Holobiontic Earth - AI meets Biological Machines.}\newline
+\textit{Subtitle: A futures study on the convergence of natural and artificial realms.}\newline
+(ISBN 979-8333202765)
+}
 
 \section{Awards \& Strategic Achievements}
-% MAPPED FOR VISUAL HIERARCHY:
-% {Title Slot} <- Organization Name (Will be Bold)
-% {Org Slot}   <- Award Name (Will be Normal/SmallCaps)
-% {Location}   <- Global/Austria
-
-\cventry{\textnormal{2023}}{Wilhelm Exner Lectures}{Fundamental Milestone Award}{Global}{}{Total Synthesis of Pyochelin.}
-\cventry{\textnormal{2023}}{iGEM}{Silver Medal}{Global}{}{Biomanufacturing Sex Hormones.}
-\cventry{\textnormal{2023}}{University of Vienna}{Performance Scholarship}{Vienna}{}{Merit-based Excellence Grant.}
-\cventry{\textnormal{1996--1999}}{ÖSB - Austrian Chess Federation}{State Chess Champion (Vienna) \& National Bronze Medalist}{Austria}{}{Strategic foresight.}
+\cventry{\textnormal{2023}}{Wilhelm Exner Lectures}{Fundamental Milestone Award}{Global}{}{%
+\limiteddesc{Total Synthesis of Pyochelin.}%
+}
+\cventry{\textnormal{2023}}{iGEM}{Silver Medal}{Global}{}{%
+\limiteddesc{Biomanufacturing Sex Hormones.}%
+}
+\cventry{\textnormal{2023}}{University of Vienna}{Performance Scholarship}{Vienna}{}{%
+\limiteddesc{Merit-based Excellence Grant.}%
+}
+\cventry{\textnormal{1996--1999}}{ÖSB - Austrian Chess Federation}{State Chess Champion (Vienna) \& National Bronze Medalist}{Austria}{}{%
+\limiteddesc{Strategic foresight.}%
+}
 
 \section{Education}
-\cventry{\textnormal{2023--2025}}{MSc Chemistry (Highest Honors)}{University of Vienna}{}{}{}
-\cventry{\textnormal{2019--2023}}{MA Cultural \& Social Anthropology}{University of Vienna}{}{}{}
-\cventry{\textnormal{2024}}{Certified Teacher}{University of Graz}{}{}{Subjects: Chemistry, Biology, Informatics.}
-\cventry{\textnormal{2020--2022}}{BSc Chemistry}{University of Vienna}{}{}{}
-\cventry{\textnormal{2009--2012}}{BA Cultural \& Social Anthropology}{University of Vienna}{}{}{}
+% Req: Title first row (Bold), then University (Italic), then Specialization.
+% Swapping args: #2 Title, #3 Org.
+\cventry{\textnormal{2023--2025}}{MSc Chemistry (Highest Honors)}{\textit{University of Vienna}}{}{}{%
+\limiteddesc{Focus: Drug Development, Bioinformatics, Automation.}%
+}
+\cventry{\textnormal{2019--2023}}{MA Cultural \& Social Anthropology}{\textit{University of Vienna}}{}{}{%
+\limiteddesc{Focus: Futures Studies, AI Architectures.}%
+}
+\cventry{\textnormal{2024}}{Certified Teacher}{\textit{University of Graz}}{}{}{%
+\limiteddesc{Subjects: Chemistry, Biology, Informatics.}%
+}
+\cventry{\textnormal{2020--2022}}{BSc Chemistry}{\textit{University of Vienna}}{}{}{%
+\limiteddesc{}%
+}
+\cventry{\textnormal{2009--2012}}{BA Cultural \& Social Anthropology}{\textit{University of Vienna}}{}{}{%
+\limiteddesc{}%
+}
 
 \section{Civic Leadership \& Non-Profit}
-\cventry{\textnormal{2020--Present}}{Founder \& Director}{Artificial Life Institute}{Vienna}{}{Research in AI and Synthetic Biology for the greater good.}
-\cventry{\textnormal{2016--Present}}{Founder \& Director}{Wunderwelt}{Vienna}{}{Promoting autonomous local structures.}
-
-\section{Entrepreneurial \& Corporate Experience}
-\cventry{\textnormal{2007--2019}}{Founder}{Cosmogenetic Biomass}{Vienna}{}{Automated cultivation systems.}
-\cventry{\textnormal{2007--2019}}{Founder}{Cosmogenetic Electrotech}{Vienna}{}{Specialized electronic devices.}
-\cventry{\textnormal{2007--2019}}{Founder}{Entrecote}{Vienna}{}{Modeling agency services.}
-\cventry{\textnormal{2004--2016}}{Head of Customer Service}{WiSco International Freight}{Vienna}{}{Logistics optimization.}
+\cventry{\textnormal{2020--Present}}{Founder \& Director}{Artificial Life Institute}{Vienna}{}{%
+\limiteddesc{Research in AI and Synthetic Biology for the greater good.}%
+}
+\cventry{\textnormal{2016--Present}}{Founder \& Director}{Wunderwelt}{Vienna}{}{%
+\limiteddesc{Promoting autonomous local structures.}%
+}
 
 \section{Competencies}
-\cvitem{Hard Science}{Organic Synthesis, Flow Chemistry, Metabolic Engineering, NMR, HPLC}
-\cvitem{Technology}{Python, Agential Frameworks, Git, Automation Scripting}
-\cvitem{Languages}{German (Native), English (Fluent), Spanish/French (Advanced)}
+% Req: Bold Entry in row, Specs in row below.
+% \cvitem{Label}{Desc} -> reformatted.
+\cvitem{}{\textbf{Hard Science}\newline \limiteddesc{Organic Synthesis, Flow Chemistry, Metabolic Engineering, NMR, HPLC}}
+\cvitem{}{\textbf{Technology}\newline \limiteddesc{Python, Agential Frameworks, Git, Automation Scripting}}
+\cvitem{}{\textbf{Languages}\newline \limiteddesc{German (Native), English (Fluent), Spanish/French (Advanced)}}
+
 \end{document}
