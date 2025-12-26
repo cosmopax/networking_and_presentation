@@ -3,7 +3,7 @@
 \moderncvcolor{burgundy}
 \usepackage[utf8]{inputenc}
 % ADJUSTED GEOMETRY
-\usepackage[scale=0.75, top=2.5cm, right=2cm, left=2cm, bottom=2cm]{geometry}
+\usepackage[scale=0.75, top=2.0cm, right=2cm, left=2cm, bottom=2cm]{geometry}
 \usepackage{qrcode}
 \usepackage[absolute,overlay]{textpos}
 \usepackage{xcolor}
@@ -16,20 +16,39 @@
 
 \name{Patrick}{Schimpl} 
 
-% CUSTOM COMMANDS FOR UNIFORMITY
-% Limit body text width ("imaginary vertical line")
+% CUSTOM COMMANDS
+% Limit body text width ("imaginary vertical line") to 85%
 \newcommand{\limiteddesc}[1]{%
-    \begin{minipage}[t]{0.85\textwidth}%
+    \noindent\begin{minipage}[t]{0.85\textwidth}%
         #1%
     \end{minipage}%
 }
 
-% Custom entry to force right-aligned Date/Location if possible, 
-% or at least consistent spacing.
-% ModernCV Banking: #2=Title(Bold), #3=Org, #4=Loc, #1=Year. 
-% We want Title (Row 1), Org (Row 2), Info (Row 3).
-% Banking renders: Title, Org, Loc, Year.
-% We will hack the arguments to force line breaks and alignment.
+% Fix Section Spacing (Uniform)
+\usepackage{etoolbox}
+\makeatletter
+% Reduce space before section title
+\patchcmd{\section}{\vspace*{2.5ex}}{\vspace*{1.5ex}}{}{}
+% Standardize space after section title
+\renewcommand*{\section}[1]{%
+  \par\addvspace{2.5ex}%
+  \phantomsection{}%
+  \addcontentsline{toc}{section}{#1}%
+  {\par\noindent\Large\bfseries\color{color1}\rule{\linewidth}{0.2ex}\par\nobreak\vspace*{0.5ex}#1\par\nobreak\vspace*{1ex}}%
+}
+\makeatother
+
+% Command for Publications to ensure Date is Right and Text Left
+\newcommand{\pubentry}[2]{%
+  \noindent\begin{minipage}[t]{0.85\textwidth}
+    #2
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[t]{0.12\textwidth}
+    \raggedleft #1
+  \end{minipage}%
+  \vspace{0.8em} % Uniform spacing between entries
+}
 
 \begin{document}
 
@@ -40,44 +59,62 @@
     \qrcode[height=2.0cm]{https://github.com/cosmopax}
 \end{textblock*}
 
-% 2. QR CODE 2 (EU-Peptides) - New
+% 2. QR CODE 2 (EU-Peptides)
 \begin{textblock*}{2.5cm}(10mm, 32mm)
     \qrcode[height=2.0cm]{https://eu-peptides.org}
 \end{textblock*}
 
-% 3. PHOTO (Reduced 10% -> ~4.0cm)
-\begin{textblock*}{5.0cm}(160mm, 10mm)
+% 3. QR CODE 3 (Artificial Life Institute) - NEW
+\begin{textblock*}{2.5cm}(10mm, 54mm)
+    \qrcode[height=2.0cm]{https://artificial-life-institute.univie.ac.at}
+\end{textblock*}
+
+% 4. PHOTO (Enlarged slightly vs previous -> 4.5cm)
+% "Top and Right stay same", so we keep X=160mm, Y=10mm
+\begin{textblock*}{5.5cm}(160mm, 10mm)
     \IfFileExists{assets/profile.jpg}{
-        \includegraphics[width=4.0cm]{assets/profile.jpg}
+        \includegraphics[width=4.5cm]{assets/profile.jpg}
     }{}
 \end{textblock*}
 
-% 4. CENTER STACK (Moved UP slightly, condensed)
-\begin{textblock*}{12cm}(4.5cm, 1.8cm)
+% 5. CENTER STACK 
+% "Move slightly to left" -> X changed from 4.5cm to 3.8cm
+% Y Position adjusted to accommodate 3 QR rows (~6cm total height on left) 
+% and spacing requirements.
+\begin{textblock*}{13cm}(3.8cm, 0.8cm)
     \begin{center}
-        {\fontsize{28}{34}\selectfont\bfseries\color{color1} Patrick Schimpl}
-        \vspace{0.2em}
-        {\large\color{darkgrey} MA. MSc. \quad $\circ$ \quad Polymath}
+        % NAME
+        {\fontfamily{pag}\selectfont\fontsize{34}{40}\selectfont\bfseries\color{color1} Patrick Schimpl}
         \vspace{0.1em}
-        {\normalsize\color{darkgrey} Chem \quad $\circ$ \quad Anthro \quad $\circ$ \quad CS \quad $\circ$ \quad Futures}
-        \vspace{0.3em}
-        {\small\color{darkgrey} Philippovichgasse 2-4/2/16, 1190 Vienna \ +43 699 11909500 \quad $\circ$ \quad patrick.schimpl@univie.ac.at \ github.com/cosmopax \quad $\circ$ \quad www.eu-peptides.org}
-        \vspace{0.6em}
+        
+        % TITLES
+        {\Large\color{black} MA. MSc.}
+        \vspace{0.8em} 
+        
+        % SIGNIFIERS
+        {\large\color{darkgrey} Chem \hspace{0.3em}$\circ$\hspace{0.3em} Anthro \hspace{0.3em}$\circ$\hspace{0.3em} CS \hspace{0.3em}$\circ$\hspace{0.3em} Futures}
+        \vspace{0.2em}
+        
+        % CONTACT
+        {\small\color{darkgrey} Philippovichgasse 2-4/2/16, 1190 Vienna \hspace{0.3em}$\circ$\hspace{0.3em} +43 699 11909500}
+        \vspace{0.1em}
+        {\small\color{darkgrey} patrick.schimpl@univie.ac.at \hspace{0.3em}$\circ$\hspace{0.3em} github.com/cosmopax}
+        \vspace{0.1em}
+        {\small\color{darkgrey} www.eu-peptides.org}
+        
+        % BONMOT
+        \vspace{1.0em}
         \textit{"Bridging molecular precision and societal foresight to engineer desirable futures."}
     \end{center}
 \end{textblock*}
 
-\vspace*{5.5cm}
+% Adjust Main Body Start Position (Move Upwards)
+% Was 5.0cm. Reducing to 4.5cm seems appropriate given Header is compact.
+\vspace*{4.5cm}
 
 % --- SECTIONS ---
-% Rule: "all locations and dates stay rightbound".
-% Rule: "body text runs at most to imaginary line".
-% We use \limiteddesc{} for descriptions.
-% We manually place dates/locations with \hfill if standard doesn't suffice.
 
 \section{Highlight: Policy \& Consultation}
-% Note: Using \hfill in arg 2 (Title) might push things? 
-% Let's try standard cventry first but keeping structure clear.
 \cventry{\textnormal{2025}}{Expert Consultant}{OECD - HQ}{Paris}{}{%
 \limiteddesc{Invited Expert for 'Responsible Innovation and Anticipatory Governance of Emerging Biotechnologies'. Advising on governance frameworks for SynBio/AI convergence.}%
 }
@@ -97,12 +134,9 @@
 }
 
 \section{Academic \& Research Experience}
-% Requirement: 
-% Bold University
-% Italic Lecturer
-% Faculty...
-% Conception...
-% Scientific Research Affiliate...
+% User Req: "University of Vienna has to start from beginning, no additional empty space"
+% We use negative vspace if standard cventry introduces gap
+\vspace{-0.5em} 
 \cventry{\textnormal{2021--Present}}{\textbf{University of Vienna}}{}{}{}{%
 \limiteddesc{%
 \textit{Lecturer} \newline
@@ -117,34 +151,34 @@ Faculty of Pharmacy, Department of Pharmaceutical Chemistry \newline
 }
 
 \section{Recent Publications}
-% Req: Title Bold (Row 1), Subtitle Italic (Row 2), Info (Row 3)
-\cvitem{2025}{%
+% User Req: "Dates to the right!!!!" and "No broken layout"
+% Using custom \pubentry{Date}{Content}
+\pubentry{2025}{%
 \textbf{Design and Synthesis of Novel Pleiotropic GABAergic agents.}\newline
-\textit{Status: Undisclosed pending patent application.}
+\textit{Status: Undisclosed pending patent application.}%
 }
-\cvitem{2024}{%
+
+\pubentry{2024}{%
 \textbf{Holobiontic Earth - AI meets Biological Machines.}\newline
 \textit{Subtitle: A futures study on the convergence of natural and artificial realms.}\newline
-(ISBN 979-8333202765)
+(ISBN 979-8333202765)%
 }
 
 \section{Awards \& Strategic Achievements}
-\cventry{\textnormal{2023}}{Wilhelm Exner Lectures}{Fundamental Milestone Award}{Global}{}{%
+\cventry{\textnormal{2023}}{Fundamental Milestone Award}{Wilhelm Exner Lectures}{Global}{}{%
 \limiteddesc{Total Synthesis of Pyochelin.}%
 }
-\cventry{\textnormal{2023}}{iGEM}{Silver Medal}{Global}{}{%
+\cventry{\textnormal{2023}}{Silver Medal}{iGEM}{Global}{}{%
 \limiteddesc{Biomanufacturing Sex Hormones.}%
 }
-\cventry{\textnormal{2023}}{University of Vienna}{Performance Scholarship}{Vienna}{}{%
+\cventry{\textnormal{2023}}{Performance Scholarship}{University of Vienna}{Vienna}{}{%
 \limiteddesc{Merit-based Excellence Grant.}%
 }
-\cventry{\textnormal{1996--1999}}{ÖSB - Austrian Chess Federation}{State Chess Champion (Vienna) \& National Bronze Medalist}{Austria}{}{%
+\cventry{\textnormal{1996--1999}}{State Chess Champion (Vienna) \& National Bronze Medalist}{ÖSB - Austrian Chess Federation}{Austria}{}{%
 \limiteddesc{Strategic foresight.}%
 }
 
 \section{Education}
-% Req: Title first row (Bold), then University (Italic), then Specialization.
-% Swapping args: #2 Title, #3 Org.
 \cventry{\textnormal{2023--2025}}{MSc Chemistry (Highest Honors)}{\textit{University of Vienna}}{}{}{%
 \limiteddesc{Focus: Drug Development, Bioinformatics, Automation.}%
 }
@@ -170,8 +204,6 @@ Faculty of Pharmacy, Department of Pharmaceutical Chemistry \newline
 }
 
 \section{Competencies}
-% Req: Bold Entry in row, Specs in row below.
-% \cvitem{Label}{Desc} -> reformatted.
 \cvitem{}{\textbf{Hard Science}\newline \limiteddesc{Organic Synthesis, Flow Chemistry, Metabolic Engineering, NMR, HPLC}}
 \cvitem{}{\textbf{Technology}\newline \limiteddesc{Python, Agential Frameworks, Git, Automation Scripting}}
 \cvitem{}{\textbf{Languages}\newline \limiteddesc{German (Native), English (Fluent), Spanish/French (Advanced)}}
