@@ -2,7 +2,8 @@
 # apply_master_layout.zsh
 # Mandate: Absolute Layout (QR Left, Photo Right), Helvetica, Full Data Restoration
 
-BASE_DIR="$HOME/projx/networking_and_presentation"
+# Get the directory where the script is located (src_latex) and go up one level
+BASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 echo ">>> 🏗️  Rebuilding CV Core & Layout..."
 
 # --- 1. JSON RESTORATION (With CHAGS, Ethno, Chess) ---
