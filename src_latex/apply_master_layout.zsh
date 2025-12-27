@@ -195,7 +195,7 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
   \par\addvspace{2.5ex}%
   \phantomsection{}%
   \addcontentsline{toc}{section}{#1}%
-  {\par\noindent\Large\bfseries\color{black}#1}\par%
+  {\par\noindent\Large\bfseries\color{color1}#1}\par%
   \vspace{-0.9em}\noindent\color{color1}\rule{\linewidth}{0.6pt}\par\nobreak\vspace*{0.5ex}%
 }
 \makeatother
@@ -267,7 +267,7 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 % Top Margin is 2.0cm.
 % We need vspace such that 2.0 + vspace > 6.4.
 % Let's use 5.2cm -> 7.2cm total. Clears QRs comfortably.
-\vspace*{5.2cm}
+\vspace*{4.7cm}
 
 % --- SECTIONS ---
 
