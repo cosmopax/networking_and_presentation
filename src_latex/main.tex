@@ -19,7 +19,7 @@
 
 % CUSTOM COMMANDS
 \newcommand{\limiteddesc}[1]{%
-    \noindent\begin{minipage}[t]{0.85\textwidth}%
+    \noindent\begin{minipage}[t]{0.82\textwidth}%
         #1%
     \end{minipage}%
 }
@@ -38,12 +38,13 @@
   \addcontentsline{toc}{section}{#1}%
   {\par\noindent\Large\bfseries\color{color1}#1}\par%
   \vspace{-0.9em}\noindent\color{color1}\rule{\linewidth}{0.6pt}\par\nobreak\vspace*{0.5ex}%
+  \color{black} % Force body text back to black after section title
 }
 \makeatother
 
 % Command for Publications
 \newcommand{\pubentry}[2]{%
-  \noindent\begin{minipage}[t]{0.85\textwidth}
+  \noindent\begin{minipage}[t]{0.82\textwidth}
     #2
   \end{minipage}%
   \hfill%
@@ -108,7 +109,10 @@
 % Top Margin is 2.0cm.
 % We need vspace such that 2.0 + vspace > 6.4.
 % Let's use 5.2cm -> 7.2cm total. Clears QRs comfortably.
+% Let's use 5.2cm -> 7.2cm total. Clears QRs comfortably.
 \vspace*{4.7cm}
+\color{black} % Ensure Body Text is Black
+
 
 % --- SECTIONS ---
 
