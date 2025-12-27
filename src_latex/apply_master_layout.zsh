@@ -190,13 +190,13 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 \patchcmd{\section}{\vspace*{2.5ex}}{\vspace*{1.0ex}}{}{}
 % Standardize space after section title + Rule UNDER (Like underline)
 % "Revert colouring" -> Restore color1 (Bordeaux) to match theme
-% "Like a typical underline" -> Pull up closer (-0.5em)
+% "Like a typical underline" -> Pull up closer (-0.9em)
 \renewcommand*{\section}[1]{%
   \par\addvspace{2.5ex}%
   \phantomsection{}%
   \addcontentsline{toc}{section}{#1}%
-  {\par\noindent\Large\bfseries\color{color1}#1}\par%
-  \vspace{-0.5em}\noindent\color{color1}\rule{\linewidth}{0.6pt}\par\nobreak\vspace*{0.5ex}%
+  {\par\noindent\Large\bfseries\color{black}#1}\par%
+  \vspace{-0.9em}\noindent\color{color1}\rule{\linewidth}{0.6pt}\par\nobreak\vspace*{0.5ex}%
 }
 \makeatother
 
@@ -218,12 +218,12 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 
 % 1. QR CODE 1 (GitHub) - Start at 1.4cm
 \begin{textblock*}{2.5cm}(10mm, 14mm)
-    \qrcode[height=2.0cm]{https://github.com/cosmopax}
+    {\color{black}\qrcode[height=2.0cm]{https://github.com/cosmopax}}
 \end{textblock*}
 
 % 2. QR CODE 2 (EU-Peptides) - Start at 3.9cm (Moved up 0.5cm)
 \begin{textblock*}{2.5cm}(10mm, 39mm)
-    \qrcode[height=2.0cm]{https://eu-peptides.org}
+    {\color{black}\qrcode[height=2.0cm]{https://eu-peptides.org}}
 \end{textblock*}
 
 % 3. PHOTO (4.5cm)
@@ -250,10 +250,10 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
         % Contact Block - Explicitly separated rows
         % Row 1: Address + Phone
         {\small\color{darkgrey} Philippovichgasse 2-4/2/16, 1190 Vienna \hspace{0.3em}$\circ$\hspace{0.3em} +43 699 11909500} \par
-        \vspace{0.1em}
+        \vspace{-0.15em}
         % Row 2: Email + Github
         {\small\color{darkgrey} patrick.schimpl@univie.ac.at \hspace{0.3em}$\circ$\hspace{0.3em} github.com/cosmopax} \par
-        \vspace{0.1em}
+        \vspace{-0.15em}
         % Row 3: Website (Explicit Par)
         {\small\color{darkgrey} www.eu-peptides.org}
         
