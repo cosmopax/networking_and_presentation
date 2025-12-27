@@ -170,7 +170,8 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 \renewcommand\familydefault{\sfdefault}
 
 % DEFINITIONS
-\definecolor{color1}{rgb}{0.5,0.0,0.13} % Burgundy
+% DEFINITIONS
+\definecolor{color1}{RGB}{128,0,32} % Bordeaux
 \definecolor{darkgrey}{rgb}{0.3,0.3,0.3}
 
 \name{Patrick}{Schimpl} 
@@ -188,7 +189,7 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 % Reduce space before section title
 \patchcmd{\section}{\vspace*{2.5ex}}{\vspace*{1.0ex}}{}{}
 % Standardize space after section title + Rule UNDER (Like underline)
-% "Revert colouring" -> Restore color1 (Burgundy) to match theme
+% "Revert colouring" -> Restore color1 (Bordeaux) to match theme
 % "Like a typical underline" -> Pull up closer (-0.5em)
 \renewcommand*{\section}[1]{%
   \par\addvspace{2.5ex}%
@@ -220,8 +221,8 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
     \qrcode[height=2.0cm]{https://github.com/cosmopax}
 \end{textblock*}
 
-% 2. QR CODE 2 (EU-Peptides) - Start at 4.4cm
-\begin{textblock*}{2.5cm}(10mm, 44mm)
+% 2. QR CODE 2 (EU-Peptides) - Start at 3.9cm (Moved up 0.5cm)
+\begin{textblock*}{2.5cm}(10mm, 39mm)
     \qrcode[height=2.0cm]{https://eu-peptides.org}
 \end{textblock*}
 
@@ -257,7 +258,7 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
         {\small\color{darkgrey} www.eu-peptides.org}
         
         \vspace{1.0em}
-        \textit{"Bridging molecular precision and societal foresight to engineer desirable futures."}
+        \textit{\color{black}"Bridging molecular precision and societal foresight to engineer desirable futures."}
     \end{center}
 \end{textblock*}
 
