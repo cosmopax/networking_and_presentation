@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1766853981 "main.tex" "../out/main.pdf" "main" 1766853982
-  "../out/main.aux" 1766853982 3086 0b792cb7929ced6399a3467a9a513502 ""
-  "../out/main.out" 1766853982 1372 430ed6cb916b9dca10c73981cd71913d ""
+["pdflatex"] 1766946436 "main.tex" "../out/main.pdf" "main" 1766946437
+  "../out/main.aux" 1766946437 3086 0ffad61de505fb1cece387399b6d8296 ""
+  "../out/main.out" 1766946437 1372 430ed6cb916b9dca10c73981cd71913d ""
   "/etc/texmf/web2c/texmf.cnf" 1516624176 1101 af7716885e081ab43982cab7b4672c1a ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
@@ -10,8 +10,6 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/avantgar/pagk8t.tfm" 1136768653 7340 62d51a8cc96448508dcbcfef0e69f404 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/helvetic/phvb8r.tfm" 1136768653 4484 b828043cbd581d289d955903c1339981 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/helvetic/phvb8t.tfm" 1136768653 6628 34c39492c0adc454c1c199922bba8363 ""
-  "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/helvetic/phvbo8r.tfm" 1136768653 4736 423eba67d4e9420ec9df4a8def143b08 ""
-  "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/helvetic/phvbo8t.tfm" 1136768653 6880 fe6c7967f27585f6fa9876f3af14edd2 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/helvetic/phvr8r.tfm" 1136768653 4712 9ef4d7d106579d4b136e1529e1a4533c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/helvetic/phvr8t.tfm" 1136768653 7040 b2bd27e2bfe6f6948cbc3239cae7444f ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/helvetic/phvro8r.tfm" 1136768653 4964 f223217e5e1f85fa3742fb0480aba9e8 ""
@@ -21,12 +19,10 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/fontawesome/FontAwesome--fontawesometwo.tfm" 1438381205 1360 3f950159754e843aad2e093f9298310a ""
   "/usr/share/texlive/texmf-dist/fonts/type1/urw/avantgar/uagd8a.pfb" 1136849748 36354 f20bee7d266ac21e410927874882a384 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb" 1136849748 35941 f27169cc74234d5bd5e4cca5abafaabb ""
-  "/usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb" 1136849748 39013 b244066151b1e3e718f9b8e88a5ff23b ""
   "/usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb" 1136849748 44648 23115b2a545ebfe2c526c3ca99db8b95 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb" 1136849748 48169 b4fd9d908b9ee8c65d4305ad39071c5e ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/avantgar/pagd8t.vf" 1136768653 2348 2e6761168126ba9a008731179fe938e3 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/helvetic/phvb8t.vf" 1136768653 2340 0efed6a948c3c37d870e4e7ddb85c7c3 ""
-  "/usr/share/texlive/texmf-dist/fonts/vf/adobe/helvetic/phvbo8t.vf" 1136768653 2344 88834f8322177295b0266ecc4b0754c3 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/helvetic/phvr8t.vf" 1136768653 2344 44ff28c9ef2fc97180cd884f900fee71 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/helvetic/phvro8t.vf" 1136768653 2348 717f0e01beff9c30c0df4945e471886f ""
   "/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -143,7 +139,7 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1516624588 1863403 f3ff9a4253bcb5fb9a9baaf0c572cb01 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1516624622 3853816 aca8e1cbe53a79e193a5c1e455f5bb43 ""
   "assets/profile.jpg" 1766370685 68908 d66d9438317ea0c418bf6c6adff6c65f ""
-  "main.tex" 1766853824 8150 aa7f5030946ee8bb65b47e24324d8da5 ""
+  "main.tex" 1766946280 10072 3cace4d1b1a2665e4dbe4953e0fb99e7 ""
   (generated)
   "../out/main.aux"
   "../out/main.log"

@@ -170,100 +170,74 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 \renewcommand\familydefault{\sfdefault}
 
 % DEFINITIONS
+% DEFINITIONS
 \definecolor{color1}{RGB}{128,0,32} % Bordeaux
 \definecolor{darkgrey}{rgb}{0.3,0.3,0.3}
-
-% --- STYLE CONTROL PANEL (SINGLE SOURCE OF TRUTH) ---
-% FONT MACROS for LEFT BODY
-\newcommand{\CVBoldLeft}{\large\bfseries\color{black}}     % Match OECD-HQ (Policy)
-\newcommand{\CVItalicLeft}{\large\itshape\color{black}}    % Match Expert Consultant (Policy)
-\newcommand{\CVNormalLeft}{\small\mdseries\color{black}}   % Match Normal Rows (Policy)
-
-% SPACING LENGTHS -- PT BASED CONTROL PANEL
-\newlength{\CVGapHeadingToFirstBold}
-\newlength{\CVGapBoldToItalic}
-\newlength{\CVGapItalicToNormal}
-\newlength{\CVGapEntryToNextEntry}
-\newlength{\CVGapLastEntryToNextSectionHeading}
-
-% 1. Heading -> First Bold: Halved Policy rule->bold (Target: -11.2pt approx)
-\setlength{\CVGapHeadingToFirstBold}{-11.2pt}
-
-% 2. Bold -> Italic: +50% vs Policy (Target: +6.2pt)
-\setlength{\CVGapBoldToItalic}{6.2pt}
-
-% 3. Italic -> Normal: -30% vs Policy (Target: -4.1pt)
-\setlength{\CVGapItalicToNormal}{-4.1pt}
-
-% 4. Entry Gap: Match BOKU -> iGEM (Target: 5.0pt)
-\setlength{\CVGapEntryToNextEntry}{5.0pt}
-
-% 5. Last Entry -> Next Section: Match Logistics -> Academic (2.5ex)
-\setlength{\CVGapLastEntryToNextSectionHeading}{2.5ex}
 
 \name{Patrick}{Schimpl} 
 
 % CUSTOM COMMANDS
+% CUSTOM COMMANDS
 \newcommand{\limiteddesc}[1]{%
     \noindent\begin{minipage}[t]{14.0cm}% Width = 16cm (target) - 2cm (left margin) = 14cm
-        \linespread{0.9}\CVNormalLeft\selectfont % Consistent Normal Font & Spacing
+        \linespread{0.9}\small\mdseries\selectfont % 0.9 Linespread to fix pixel rendering artefacts
         #1%
     \end{minipage}%
 }
 
-% Fix Section Spacing & Rule Position
+% Fix Section Spacing & Rule Position (Underscore Style)
 \usepackage{etoolbox}
 \makeatletter
-% Nullify standard pre-section space to control it manually via definition
-\patchcmd{\section}{\vspace*{2.5ex}}{\vspace*{\CVGapLastEntryToNextSectionHeading}}{}{}
+% Reduce space before section title
+\patchcmd{\section}{\vspace*{2.5ex}}{\vspace*{1.0ex}}{}{}
+% Section Heading -> First Bold Row Spacing
+% User Request: 50% of Previous (Previous was 0.05em).
+% Target: 0.025em.
+% Fix Overlap: Use positive spacing.
 \renewcommand*{\section}[1]{%
-  \par\addvspace{\CVGapLastEntryToNextSectionHeading}%
+  \par\addvspace{2.5ex}%
   \phantomsection{}%
   \addcontentsline{toc}{section}{#1}%
   {\par\noindent\Large\bfseries\color{color1}#1}\par%
-  \vspace{-0.9em}\noindent\color{color1}\rule{\linewidth}{0.6pt}\par\nobreak\vspace*{\CVGapHeadingToFirstBold}%
-  \color{black}
+  \vspace{-0.9em}\noindent\color{color1}\rule{\linewidth}{0.6pt}\par\nobreak\vspace*{0.025em}% Halved spacing
+  \color{black} % Force body text back to black after section title
 }
 \makeatother
 
-% COMPETENCY ENTRY (Category + List)
-\newcommand{\compentry}[2]{%
-  \noindent{\CVBoldLeft #1}\par
-  \vspace{\CVGapItalicToNormal}% Reuse tightened italic->normal spacing for bold->list
-  {\CVNormalLeft #2}\par
-  \addvspace{\CVGapEntryToNextEntry}%
-}
-
-% UNIFIED ENTRY: RECENT PUBLICATIONS (Uses Global Macros)
+% Command for Publications
 \newcommand{\pubentry}[2]{%
-  \par\vspace{\CVGapHeadingToFirstBold} 
+  \par\vspace{0.025em} % Match halved start spacing
   \noindent\begin{minipage}[t]{14.0cm}
     #2
   \end{minipage}%
   \hfill%
   \begin{minipage}[t]{0.12\textwidth}
     \raggedleft 
-    \vspace*{1.2em} 
-    {\CVNormalLeft #1} 
+    \vspace*{1.2em} % Push Date down to align with Row 2 (Italic)
+    {\small\mdseries #1} % Ensure Date #1 is Small Normal
   \end{minipage}%
-  \par\addvspace{\CVGapEntryToNextEntry} 
+  \par\addvspace{0.4em} % 2x Entry Spacing (looser)
 }
 
-% STANDARD CV ENTRY (Unified)
+% REFINED CVENTRY:
+% Spacing Tuning:
+% 1. Start: 0.025em (Halved).
+% 2. Internal Bold->Italic: -0.2em (Maintained).
+% 3. Italic->Normal: 0.015em (Halved).
 \renewcommand*{\cventry}[6]{%
-  % Note: Initial Heading spacing removed here. It's handled by \section.
+  \vspace{0.025em}% Minimal halved start space
   \noindent%
   \begin{minipage}[t]{\linewidth}%
     % Row 1: Bold Content (#2) | Right: Bold Location (#4)
-    {\CVBoldLeft#2}\hfill{\small\bfseries\color{black}#4}\par%
-    \vspace{\CVGapBoldToItalic} 
+    {\large\bfseries\color{black}#2}\hfill{\small\bfseries\color{black}#4}\par%
+    \vspace{-0.2em} % Reduce Bold->Italic gap by ~50%
     % Row 2: Italic Content (#3) | Right: Date (#1)
-    {\CVItalicLeft#3}\hfill{\CVNormalLeft\color{black}#1}\par% <-- Year #1 aligns with Italic #3
+    {\large\itshape\color{black}#3}\hfill{\small\mdseries\color{black}#1}\par%
     % Description
-    \vspace{\CVGapItalicToNormal}%
-    {\CVNormalLeft#6}%
+    \vspace{0.015em}% Reduced italic-to-normal gap (Halved)
+    {\small\mdseries\color{black}#6}%
   \end{minipage}%
-  \par\addvspace{\CVGapEntryToNextEntry}%
+  \par\addvspace{0.4em}% 2x Entry Spacing
 }
 
 \begin{document}
@@ -350,26 +324,30 @@ cat <<EOF > "$BASE_DIR/src_latex/main.tex"
 % SWAP: Org (#2 Bold) is Univ Vienna. Role (#3 Italic) is Lecturer.
 \cventry{2021--Present}{University of Vienna}{Lecturer}{}{}{%
 \limiteddesc{%
-Faculty Chemistry, Departments: OC, TBI; IOC, formerly Faculty Biology, Department: Mol. Bio \newline
-Conception and Teaching of Practical Lab Course: Automation in Everyday Lab Routine; Teaching of Practical Lab Courses from various domains of Chemistry%
+\normalsize\mdseries\upshape Faculty Chemistry, Departments: OC, TBI; IOC, formerly Faculty Biology, Department: Mol. Bio \newline
+\normalsize{Conception and Teaching of Practical Lab Course: Automation in Everyday Lab Routine; Teaching of Practical Lab Courses from various domains of Chemistry}%
 }%
 }
 % NEW ROW: Univ Vienna (Bold), Sci Research Affil (Italic), 2023-Present (Time)
 \cventry{2023--Present}{University of Vienna}{Scientific Research Affiliate}{}{}{%
 \limiteddesc{%
-Faculty of Pharmacy, Department of Pharmaceutical Chemistry \newline
+\normalsize\mdseries\upshape Faculty of Pharmacy, Department of Pharmaceutical Chemistry \newline
 \textit{R\&D Focus:} Novel Pleiotropic Neurotherapeutics \& Self-Driven Adaptive Lab Systems. \newline % Italic
 \textit{Methodology: Designing teleonomic, optimization-driven agential frameworks leveraging catalytic reticular matrices.}%
 }%
 }
 
 \section{Recent Publications}
-\cventry{2025}{Design and Synthesis of Novel Pleiotropic GABAergic agents.}{(Italic Subtitle)}{}{}{%
-\limiteddesc{Status: Undisclosed pending patent application.}%
+\pubentry{2025}{%
+{\large\bfseries Design and Synthesis of Novel Pleiotropic GABAergic agents.}\newline 
+{\large\itshape (Italic Subtitle)}\newline % Large Italic (Consistent)
+{\small Status: Undisclosed pending patent application.}% Normal Status
 }
 
-\cventry{2024}{Holobiontic Earth - AI meets Biological Machines.}{Subtitle: A futures study on the convergence of natural and artificial realms.}{}{}{%
-\limiteddesc{(ISBN 979-8333202765)}%
+\pubentry{2024}{%
+{\large\bfseries Holobiontic Earth - AI meets Biological Machines.}\newline 
+{\large\itshape Subtitle: A futures study on the convergence of natural and artificial realms.}\newline % Large Italic (Consistent)
+{\small (ISBN 979-8333202765)}% Normal ISBN
 }
 
 \section{Awards \& Strategic Achievements}
@@ -410,10 +388,9 @@ Faculty of Pharmacy, Department of Pharmaceutical Chemistry \newline
 }
 
 \section{Competencies}
-% UNIFIED PATH: Use dedicated compentry to bold categories and list items.
-\compentry{Hard Science}{Organic Synthesis, Flow Chemistry, Metabolic Engineering, NMR, HPLC}
-\compentry{Technology}{Python, Agential Frameworks, Git, Automation Scripting}
-\compentry{Languages}{German (Native), English (Fluent), Spanish/French (Advanced)}
+\cvitem{}{\large\bfseries Hard Science \newline \limiteddesc{Organic Synthesis, Flow Chemistry, Metabolic Engineering, NMR, HPLC}}
+\cvitem{}{\large\bfseries Technology \newline \limiteddesc{Python, Agential Frameworks, Git, Automation Scripting}}
+\cvitem{}{\large\bfseries Languages \newline \limiteddesc{German (Native), English (Fluent), Spanish/French (Advanced)}}
 
 \end{document}
 EOF

@@ -11,100 +11,90 @@
 \renewcommand\familydefault{\sfdefault}
 
 % DEFINITIONS
+% DEFINITIONS
 \definecolor{color1}{RGB}{128,0,32} % Bordeaux
 \definecolor{darkgrey}{rgb}{0.3,0.3,0.3}
 
-% --- STYLE CONTROL PANEL (SINGLE SOURCE OF TRUTH) ---
-% FONT MACROS for LEFT BODY
-\newcommand{\CVBoldLeft}{\large\bfseries\color{black}}     % Match OECD-HQ (Policy)
-\newcommand{\CVItalicLeft}{\large\itshape\color{black}}    % Match Expert Consultant (Policy)
-\newcommand{\CVNormalLeft}{\small\mdseries\color{black}}   % Match Normal Rows (Policy)
+% --- SINGLE SOURCE OF TRUTH: SPACING & LAYOUT ---
+% DIAGNOSIS: Inconsistencies caused by hardcoded 'vspace' values scattered across commands.
+% FIX: Centralized length definitions. Adjust here to propagate everywhere.
 
-% SPACING LENGTHS -- PT BASED CONTROL PANEL
-\newlength{\CVGapHeadingToFirstBold}
-\newlength{\CVGapBoldToItalic}
-\newlength{\CVGapItalicToNormal}
-\newlength{\CVGapEntryToNextEntry}
-\newlength{\CVGapLastEntryToNextSectionHeading}
+% 1. Section Headline -> First Bold Row (Ref: Policy->OECD)
+% User Rule: 50% of Previous (0.025em) -> Target 0.0125em.
+\newlength{\gapSectionBold}
+\setlength{\gapSectionBold}{0.0125em}
 
-% 1. Heading -> First Bold: Halved Policy rule->bold (Target: -11.2pt approx)
-\setlength{\CVGapHeadingToFirstBold}{-11.2pt}
+% 2. Bold Row -> Italic Row (Ref: OECD->Expert Consultant)
+% User Rule: "Increase" / "2x B_ref". Previous was -0.2em (Tight).
+% Adjusted to -0.1em (Less tight = Larger gap).
+\newlength{\gapBoldItalic}
+\setlength{\gapBoldItalic}{-0.1em}
 
-% 2. Bold -> Italic: +50% vs Policy (Target: +6.2pt)
-\setlength{\CVGapBoldToItalic}{6.2pt}
+% 3. Italic Row -> First Normal Row (Ref: Expert->Invited)
+% User Rule: 75% of Previous (0.015em) -> Target 0.01125em.
+\newlength{\gapItalicNormal}
+\setlength{\gapItalicNormal}{0.01125em}
 
-% 3. Italic -> Normal: -30% vs Policy (Target: -4.1pt)
-\setlength{\CVGapItalicToNormal}{-4.1pt}
-
-% 4. Entry Gap: Match BOKU -> iGEM (Target: 5.0pt)
-\setlength{\CVGapEntryToNextEntry}{5.0pt}
-
-% 5. Last Entry -> Next Section: Match Logistics -> Academic (2.5ex)
-\setlength{\CVGapLastEntryToNextSectionHeading}{2.5ex}
+% 4. Entry -> Entry Spacing
+% User Rule: Match "Academic... Czechs 11". Standardized to 0.4em.
+\newlength{\gapEntry}
+\setlength{\gapEntry}{0.4em}
 
 \name{Patrick}{Schimpl} 
 
 % CUSTOM COMMANDS
 \newcommand{\limiteddesc}[1]{%
     \noindent\begin{minipage}[t]{14.0cm}% Width = 16cm (target) - 2cm (left margin) = 14cm
-        \linespread{0.9}\CVNormalLeft\selectfont % Consistent Normal Font & Spacing
+        \linespread{0.9}\small\mdseries\selectfont % Consistent Normal Font & Spacing
         #1%
     \end{minipage}%
 }
 
-% Fix Section Spacing & Rule Position
+% Fix Section Spacing & Rule Position (Underscore Style)
 \usepackage{etoolbox}
 \makeatletter
-% Nullify standard pre-section space to control it manually via definition
-\patchcmd{\section}{\vspace*{2.5ex}}{\vspace*{\CVGapLastEntryToNextSectionHeading}}{}{}
+% Reduce space before section title
+\patchcmd{\section}{\vspace*{2.5ex}}{\vspace*{1.0ex}}{}{}
 \renewcommand*{\section}[1]{%
-  \par\addvspace{\CVGapLastEntryToNextSectionHeading}%
+  \par\addvspace{2.5ex}%
   \phantomsection{}%
   \addcontentsline{toc}{section}{#1}%
   {\par\noindent\Large\bfseries\color{color1}#1}\par%
-  \vspace{-0.9em}\noindent\color{color1}\rule{\linewidth}{0.6pt}\par\nobreak\vspace*{\CVGapHeadingToFirstBold}%
+  \vspace{-0.9em}\noindent\color{color1}\rule{\linewidth}{0.6pt}\par\nobreak\vspace*{\gapSectionBold}% Use Variable
   \color{black}
 }
 \makeatother
 
-% COMPETENCY ENTRY (Category + List)
-\newcommand{\compentry}[2]{%
-  \noindent{\CVBoldLeft #1}\par
-  \vspace{\CVGapItalicToNormal}% Reuse tightened italic->normal spacing for bold->list
-  {\CVNormalLeft #2}\par
-  \addvspace{\CVGapEntryToNextEntry}%
-}
-
-% UNIFIED ENTRY: RECENT PUBLICATIONS (Uses Global Macros)
+% Command for Publications
 \newcommand{\pubentry}[2]{%
-  \par\vspace{\CVGapHeadingToFirstBold} 
+  \par\vspace{\gapSectionBold} % Match Section->Bold spacing for consistency
   \noindent\begin{minipage}[t]{14.0cm}
     #2
   \end{minipage}%
   \hfill%
   \begin{minipage}[t]{0.12\textwidth}
     \raggedleft 
-    \vspace*{1.2em} 
-    {\CVNormalLeft #1} 
+    \vspace*{1.2em} % Vertical alignment offset for Right Side Date
+    {\small\mdseries #1} 
   \end{minipage}%
-  \par\addvspace{\CVGapEntryToNextEntry} 
+  \par\addvspace{\gapEntry} % Use Variable
 }
 
-% STANDARD CV ENTRY (Unified)
+% REFINED CVENTRY (Unified Variables)
 \renewcommand*{\cventry}[6]{%
-  % Note: Initial Heading spacing removed here. It's handled by \section.
+  \vspace{\gapSectionBold}% Start with minimal gap (consistent with Section->Bold)
   \noindent%
   \begin{minipage}[t]{\linewidth}%
     % Row 1: Bold Content (#2) | Right: Bold Location (#4)
-    {\CVBoldLeft#2}\hfill{\small\bfseries\color{black}#4}\par%
-    \vspace{\CVGapBoldToItalic} 
+    {\large\bfseries\color{black}#2}\hfill{\small\bfseries\color{black}#4}\par%
+    \vspace{\gapBoldItalic} % Use Variable
     % Row 2: Italic Content (#3) | Right: Date (#1)
-    {\CVItalicLeft#3}\hfill{\CVNormalLeft\color{black}#1}\par% <-- Year #1 aligns with Italic #3
+    {\large\itshape\color{black}#3}\hfill{\small\mdseries\color{black}#1}\par%
     % Description
-    \vspace{\CVGapItalicToNormal}%
-    {\CVNormalLeft#6}%
+    \vspace{\gapItalicNormal}% Use Variable
+    {\small\mdseries\color{black}#6}%
   \end{minipage}%
-  \par\addvspace{\CVGapEntryToNextEntry}%
+  \par\addvspace{\gapEntry}% Use Variable
 }
 
 \begin{document}
@@ -191,26 +181,30 @@
 % SWAP: Org (#2 Bold) is Univ Vienna. Role (#3 Italic) is Lecturer.
 \cventry{2021--Present}{University of Vienna}{Lecturer}{}{}{%
 \limiteddesc{%
-Faculty Chemistry, Departments: OC, TBI; IOC, formerly Faculty Biology, Department: Mol. Bio \newline
-Conception and Teaching of Practical Lab Course: Automation in Everyday Lab Routine; Teaching of Practical Lab Courses from various domains of Chemistry%
+\normalsize\mdseries\upshape Faculty Chemistry, Departments: OC, TBI; IOC, formerly Faculty Biology, Department: Mol. Bio \newline
+\normalsize{Conception and Teaching of Practical Lab Course: Automation in Everyday Lab Routine; Teaching of Practical Lab Courses from various domains of Chemistry}%
 }%
 }
 % NEW ROW: Univ Vienna (Bold), Sci Research Affil (Italic), 2023-Present (Time)
 \cventry{2023--Present}{University of Vienna}{Scientific Research Affiliate}{}{}{%
 \limiteddesc{%
-Faculty of Pharmacy, Department of Pharmaceutical Chemistry \newline
+\normalsize\mdseries\upshape Faculty of Pharmacy, Department of Pharmaceutical Chemistry \newline
 \textit{R\&D Focus:} Novel Pleiotropic Neurotherapeutics \& Self-Driven Adaptive Lab Systems. \newline % Italic
 \textit{Methodology: Designing teleonomic, optimization-driven agential frameworks leveraging catalytic reticular matrices.}%
 }%
 }
 
 \section{Recent Publications}
-\cventry{2025}{Design and Synthesis of Novel Pleiotropic GABAergic agents.}{(Italic Subtitle)}{}{}{%
-\limiteddesc{Status: Undisclosed pending patent application.}%
+\pubentry{2025}{%
+{\large\bfseries Design and Synthesis of Novel Pleiotropic GABAergic agents.}\newline 
+{\large\itshape (Italic Subtitle)}\newline % Large Italic (Consistent)
+{\small Status: Undisclosed pending patent application.}% Normal Status
 }
 
-\cventry{2024}{Holobiontic Earth - AI meets Biological Machines.}{Subtitle: A futures study on the convergence of natural and artificial realms.}{}{}{%
-\limiteddesc{(ISBN 979-8333202765)}%
+\pubentry{2024}{%
+{\large\bfseries Holobiontic Earth - AI meets Biological Machines.}\newline 
+{\large\itshape Subtitle: A futures study on the convergence of natural and artificial realms.}\newline % Large Italic (Consistent)
+{\small (ISBN 979-8333202765)}% Normal ISBN
 }
 
 \section{Awards \& Strategic Achievements}
@@ -251,9 +245,8 @@ Faculty of Pharmacy, Department of Pharmaceutical Chemistry \newline
 }
 
 \section{Competencies}
-% UNIFIED PATH: Use dedicated compentry to bold categories and list items.
-\compentry{Hard Science}{Organic Synthesis, Flow Chemistry, Metabolic Engineering, NMR, HPLC}
-\compentry{Technology}{Python, Agential Frameworks, Git, Automation Scripting}
-\compentry{Languages}{German (Native), English (Fluent), Spanish/French (Advanced)}
+\cvitem{}{\large\bfseries Hard Science \newline \limiteddesc{Organic Synthesis, Flow Chemistry, Metabolic Engineering, NMR, HPLC}}
+\cvitem{}{\large\bfseries Technology \newline \limiteddesc{Python, Agential Frameworks, Git, Automation Scripting}}
+\cvitem{}{\large\bfseries Languages \newline \limiteddesc{German (Native), English (Fluent), Spanish/French (Advanced)}}
 
 \end{document}
